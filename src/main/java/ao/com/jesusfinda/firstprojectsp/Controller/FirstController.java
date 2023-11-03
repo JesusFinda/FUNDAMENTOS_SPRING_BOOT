@@ -25,13 +25,15 @@ public class FirstController {
     }
 
      @PostMapping("/methodWithListHeadersParams")
-    public String metthodWithListHeadersParams(@RequestHeader("name") String name){
-        return "metthodWithHeadersParams "+ name;
+    public String methodWithListHeadersParams(@RequestHeader Map<String,String> headers){
+        return "methodWithHeadersParams "+ headers.entrySet();
     }
 
+    
+
     @PostMapping("/methodWithHeadersParams")
-    public String metthodWithHeadersParams(@RequestHeader Map<String,String> headrs){
-        return "metthodWithHeadersParams "+ headrs.entrySet();
+    public String methodWithHeadersParams(@RequestHeader("name") String name){
+        return "methodWithHeadersParams "+ name;
     }
 
 
