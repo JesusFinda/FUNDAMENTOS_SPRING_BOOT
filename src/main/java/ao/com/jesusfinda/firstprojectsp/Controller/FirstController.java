@@ -2,6 +2,9 @@ package ao.com.jesusfinda.firstprojectsp.Controller;
 
 import java.util.Map;
 
+import org.apache.catalina.connector.Response;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -29,13 +32,24 @@ public class FirstController {
         return "methodWithHeadersParams "+ headers.entrySet();
     }
 
-    
 
-    @PostMapping("/methodWithHeadersParams")
+    @PostMapping("/methodWitHeadersParams")
     public String methodWithHeadersParams(@RequestHeader("name") String name){
         return "methodWithHeadersParams "+ name;
     }
 
+    @PostMapping("/methodResponseEntity/{id}")
+    public ResponseEntity<Object> MethodResponseEntity(@PathVariable Long id){
+        var usuario=new Usuario("JesusFinda");
+        if(id>5){
+            return ResponseEntity.status(HttpStatus.OK).body(usuario);
+
+        }
+
+        return ResponseEntity.badRequest().body("Número menor que 5");
+
+
+    }
 
 
     
