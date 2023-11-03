@@ -17,8 +17,13 @@ public class FirstController {
     }
 
     @PostMapping("/methodWithBodyParams")
-    public String metthodWithBodyParams(@RequestBody String username){
-        return "metthodWithBodyParams "+ username;
+    public String metthodWithBodyParams(@RequestBody Usuario usuario){
+        return "metthodWithBodyParams "+ usuario.username;
     }
     
+    /**
+     * Usuario
+     */
+    public record Usuario(String username) {
+    }
 }
